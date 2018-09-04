@@ -6,10 +6,12 @@ public class EnemyBehavior : MonoBehaviour {
 
     public float speed;
     Renderer m_Renderer;
-   
+    private SpawnSystem spawner;   
 
     // Use this for initialization
     void Start () {
+        spawner = GameObject.Find("Spawner").GetComponent<SpawnSystem>();
+        spawner.enemies.Add(gameObject);
         m_Renderer = GetComponent<Renderer>();
     }
 
@@ -23,6 +25,7 @@ public class EnemyBehavior : MonoBehaviour {
         
         if (transform.position.y < a.y)
         {
+            spawner.enemies.Remove(gameObject);
             Destroy(gameObject);
                         
         }
