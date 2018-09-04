@@ -4,29 +4,31 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour {
 
-    private LineRenderer lineRenderer;
+    public LineRenderer lineRenderer;
     public Transform laserHit;
 	// Use this for initialization
 	void Start () {
         lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.enabled = false;
+        //lineRenderer.enabled = false;
         lineRenderer.useWorldSpace = true;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+    
+    // Update is called once per frame
+    public void shoot () {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up);
         Debug.DrawLine(transform.position, hit.point);
         laserHit.position = hit.point;
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, laserHit.position);
-        if(Input.GetMouseButtonDown(0))
+        if (hit)
         {
-            lineRenderer.enabled = true;
-        }
+            Destroy(hit.transform.gameObject);
+        }  
         else
         {
-            lineRenderer.enabled = false;
+            Debug.Log("You missed!");
         }
+            
+        
 	}
 }
