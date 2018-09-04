@@ -9,7 +9,10 @@ public class SpawnSystem : MonoBehaviour {
     private Vector3 spawnPoint;
 
     public float spawnRate;
+<<<<<<< HEAD
     public List <GameObject> enemies;
+=======
+>>>>>>> 6a8b46f5b4e559ce1e89a74213704cf569c8cff3
 
     // Use this for initialization
     void Start () {
