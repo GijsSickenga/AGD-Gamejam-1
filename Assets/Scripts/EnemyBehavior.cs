@@ -17,7 +17,10 @@ public class EnemyBehavior : MonoBehaviour {
 
     }
 
-    
+    private void OnDestroy()
+    {
+        spawner.enemies.Remove(gameObject);
+    }
 
     // Update is called once per frame
     void Update () {
@@ -28,7 +31,7 @@ public class EnemyBehavior : MonoBehaviour {
         if (transform.position.y < a.y)
         {
 
-            spawner.enemies.Remove(gameObject);
+            
             score.newScore = 0;
             Destroy(gameObject);
                         
