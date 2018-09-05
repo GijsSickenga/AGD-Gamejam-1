@@ -37,6 +37,7 @@ public class Laser : MonoBehaviour {
             enemy.Explode();
 
             score.life++;
+            score.life = Mathf.Clamp(score.life, 0, 100);
             score.scoreMultiplier++;
             score.scoreCount = score.scoreCount + 3 * score.scoreMultiplier;
 

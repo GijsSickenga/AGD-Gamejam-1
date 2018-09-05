@@ -42,8 +42,8 @@ public class SpawnSystem : MonoBehaviour
         {
             nextActionTime += period;
             StartCoroutine(Spawn());
-            if(period > 0.22)
-            period *= 0.99f;
+            if(period > 0.15)
+                period -= 0.01f;
         }
 
         Debug.Log(period);
