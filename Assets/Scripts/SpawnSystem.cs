@@ -6,11 +6,9 @@ public class SpawnSystem : MonoBehaviour
 {
     public List<GameObject> spawners = new List<GameObject>();
     public GameObject enemy;
-    private Vector3 spawnPoint;
     
     private float nextActionTime = 1f;
     float period = 1f;
-
 
     public float spawnRate;
 
@@ -18,22 +16,22 @@ public class SpawnSystem : MonoBehaviour
 
     public Score scoreManager;
 
-
-    // Use this for initialization
-
-
-    void Start ()
-    {
-    }
-
-
     public IEnumerator Spawn()
     {
         float f = 1 / spawnRate;
         yield return new WaitForSeconds(f);
-        spawnPoint = spawners[Random.Range(0, spawners.Count)].transform.position;
-        GameObject newEnemy = GameObject.Instantiate(enemy, spawnPoint, Quaternion.Euler(0, 0, 90));
-        newEnemy.GetComponent<EnemyBehavior>().score = scoreManager;
+        GameObject spawner = spawners[Random.Range(0, spawners.Count)];
+        GameObject newEnemy = GameObject.Instantiate(enemy, spawner.transform.position, Quaternion.Euler(0, 0, 90));
+        EnemyBehavior enemyBehaviour = newEnemy.GetComponent<EnemyBehavior>();
+        enemyBehaviour.score = scoreManager;
+
+        // Scale enemy to fit the lane it's on.
+        newEnemy.transform.localScale = new Vector3(spawner.transform.parent.localScale.y,
+                                                    spawner.transform.parent.localScale.y,
+                                                    1);
+
+        // Scale enemy speed based on ship size.
+        enemyBehaviour.speed = 2 * newEnemy.transform.localScale.x;
     }
 
     // Update is called once per frame
@@ -50,6 +48,4 @@ public class SpawnSystem : MonoBehaviour
 
         Debug.Log(period);
     }
-    
-
 }
