@@ -17,6 +17,8 @@ public class SpawnSystem : MonoBehaviour
 
     public List<GameObject> enemies;
 
+    public Score scoreManager;
+
 
     // Use this for initialization
 
@@ -30,9 +32,10 @@ public class SpawnSystem : MonoBehaviour
         float f = 1 / spawnRate;
         yield return new WaitForSeconds(f);
         spawnPoint = spawners[Random.Range(0, 4)].transform.position;
-        GameObject.Instantiate(enemy, spawnPoint, Quaternion.Euler(0, 0, 90));
-        
+        GameObject newEnemy = GameObject.Instantiate(enemy, spawnPoint, Quaternion.Euler(0, 0, 90));
+        newEnemy.GetComponent<EnemyBehavior>().score = scoreManager;
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -41,10 +44,11 @@ public class SpawnSystem : MonoBehaviour
         {
             nextActionTime += period;
             StartCoroutine(Spawn());
-            if(period < 0.2)
+            if(period > 0.3)
             period *= 0.99f;
         }
 
+        Debug.Log(period);
     }
     
 

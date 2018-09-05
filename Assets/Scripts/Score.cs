@@ -7,6 +7,9 @@ public class Score : MonoBehaviour
     public Text score;
     public int scoreCount;
     public int newScore;
+    public Text multiplier;
+    public int scoreMultiplier = 0;
+
     // Use this for initialization
     void Start()
     {
@@ -17,6 +20,7 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score.text = "Score:" + " " + scoreCount;
+        score.text = "Score: " + scoreCount;
+        multiplier.text = "X " + scoreMultiplier;
     }
 }

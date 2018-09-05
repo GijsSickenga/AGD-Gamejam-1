@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Laser : MonoBehaviour {
 
     public LineRenderer lineRenderer;
     public Transform laserHit;
+
     Score score;
 	// Use this for initialization
 	void Start () {
@@ -26,15 +28,17 @@ public class Laser : MonoBehaviour {
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, laserHit.position);
             Destroy(hit.transform.gameObject);
-            score.newScore++;
-            score.scoreCount = score.scoreCount + 1 + score.newScore;
+            score.scoreMultiplier++;
+            score.scoreCount = score.scoreCount + 3 * score.scoreMultiplier;
         }  
         else
         {
-            score.newScore = 0;
-            Vector2 up = new Vector2(transform.position.x, 7.5f);
+            score.scoreMultiplier = 0;
+            Vector2 up = new Vector2(- 7.5f, transform.position.y);
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, up);
         }
 	}
+
+    
 }
