@@ -1,5 +1,4 @@
-
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +9,7 @@ public class Laser : MonoBehaviour {
     Score score;
 	// Use this for initialization
 	void Start () {
+        Debug.Log("Hier dan ook right???");
         score = GameObject.FindObjectOfType(typeof(Score)) as Score;
         lineRenderer = GetComponent<LineRenderer>();
         //lineRenderer.enabled = false;
@@ -18,9 +18,8 @@ public class Laser : MonoBehaviour {
     
     // Update is called once per frame
     public void shoot () {
+        Start();
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up);
-        Debug.DrawLine(transform.position, hit.point);
-        
         if (hit)
         {
             laserHit.position = hit.point;
@@ -32,13 +31,10 @@ public class Laser : MonoBehaviour {
         }  
         else
         {
-            laserHit.position = hit.point;
+            score.newScore = 0;
+            Vector2 up = new Vector2(transform.position.x, 7.5f);
             lineRenderer.SetPosition(0, transform.position);
-            lineRenderer.SetPosition(1, transform.up);
-
-            Debug.Log("You missed!");
+            lineRenderer.SetPosition(1, up);
         }
-            
-        
 	}
 }

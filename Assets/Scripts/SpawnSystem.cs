@@ -8,9 +8,10 @@ public class SpawnSystem : MonoBehaviour
     public GameObject[] spawners;
     public GameObject enemy;
     private Vector3 spawnPoint;
-
+    
     private float nextActionTime = 1f;
     float period = 1f;
+
 
     public float spawnRate;
 
@@ -18,9 +19,9 @@ public class SpawnSystem : MonoBehaviour
 
 
     // Use this for initialization
-    void Start()
-    {
-        Spawn();
+
+
+    void Start () {
     }
 
 
