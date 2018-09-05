@@ -25,9 +25,11 @@ public class Score : MonoBehaviour
     {
         score.text = "Score: " + scoreCount;
         multiplier.text = "X " + scoreMultiplier;
-        lifeCount.text = "life " + scoreMultiplier;
+        lifeCount.text = "life " + life;
+
         if (life <= 0) {
-            SceneManager.LoadScene("EndScreen", LoadSceneMode.Additive);
+            SceneManager.LoadScene("EndScreen");
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("EndScreen"));
         }
     }
 }

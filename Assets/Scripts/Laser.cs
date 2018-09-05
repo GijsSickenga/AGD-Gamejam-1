@@ -11,7 +11,7 @@ public class Laser : MonoBehaviour {
     Score score;
 	// Use this for initialization
 	void Start () {
-        Debug.Log("Hier dan ook right???");
+
         score = GameObject.FindObjectOfType(typeof(Score)) as Score;
         enemy = GameObject.FindObjectOfType(typeof(EnemyBehavior)) as EnemyBehavior;
         lineRenderer = GetComponent<LineRenderer>();
