@@ -6,8 +6,10 @@ public class Laser : MonoBehaviour {
 
     public LineRenderer lineRenderer;
     public Transform laserHit;
+    Score score;
 	// Use this for initialization
 	void Start () {
+        score = GameObject.FindObjectOfType(typeof(Score)) as Score;
         lineRenderer = GetComponent<LineRenderer>();
         //lineRenderer.enabled = false;
         lineRenderer.useWorldSpace = true;
@@ -22,10 +24,14 @@ public class Laser : MonoBehaviour {
         lineRenderer.SetPosition(1, laserHit.position);
         if (hit)
         {
+
             Destroy(hit.transform.gameObject);
+            score.newScore++;
+            score.scoreCount = score.scoreCount + 1 + score.newScore;
         }  
         else
         {
+            
             Debug.Log("You missed!");
         }
             

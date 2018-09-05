@@ -6,13 +6,14 @@ public class EnemyBehavior : MonoBehaviour {
 
     public float speed;
     Renderer m_Renderer;
-
+    Score score;
     private SpawnSystem spawner;   
 
     // Use this for initialization
     void Start () {
         spawner = GameObject.Find("Spawner").GetComponent<SpawnSystem>();
         spawner.enemies.Add(gameObject);
+        score = GameObject.FindObjectOfType(typeof(Score)) as Score;
 
     }
 
@@ -28,7 +29,7 @@ public class EnemyBehavior : MonoBehaviour {
         {
 
             spawner.enemies.Remove(gameObject);
-
+            score.newScore = 0;
             Destroy(gameObject);
                         
         }
