@@ -25,8 +25,8 @@ public class weaponMovement : MonoBehaviour {
         {
             shoot = true;
             
-            newPosition.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-            newPosition.y = transform.position.y;
+            newPosition.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
+            newPosition.x = transform.position.x;
             transform.position = newPosition;
             ns.shoot();
             ns.lineRenderer.enabled = true;
