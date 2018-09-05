@@ -9,6 +9,7 @@ public class Score : MonoBehaviour
     public int scoreCount;
     public int newScore;
     public Text multiplier;
+    public Text lifeCount;
     public int scoreMultiplier = 0;
     public int life = 50;
 
@@ -24,7 +25,9 @@ public class Score : MonoBehaviour
     {
         score.text = "Score: " + scoreCount;
         multiplier.text = "X " + scoreMultiplier;
-        if (life <= 0)
-            (SceneManager.LoadScene("EndScreen", LoadSceneMode.Additive);)
+        lifeCount.text = "life " + scoreMultiplier;
+        if (life <= 0) {
+            SceneManager.LoadScene("EndScreen", LoadSceneMode.Additive);
+        }
     }
 }

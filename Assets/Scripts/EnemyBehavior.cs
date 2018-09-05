@@ -17,7 +17,7 @@ public class EnemyBehavior : MonoBehaviour {
         {
             Explode();
             Destroy(gameObject);
-
+            score.life -= 10;
             score.scoreMultiplier = 0;
         }
     }

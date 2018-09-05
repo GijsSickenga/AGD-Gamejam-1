@@ -686,11 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce1726aaf63a0848a526bf947b5d3b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawners:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  spawners: []
   enemy: {fileID: 1534263758832818, guid: 066ffeb2c3a3db74a939fa8da911fa20, type: 2}
   spawnRate: 50
   enemies: []
