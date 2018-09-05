@@ -10,7 +10,7 @@ public class SpawnSystem : MonoBehaviour {
 
     float spawnTime = 5f;
 
-    float spawnTimePassed = Time.time ;
+    float spawnTimePassed;
 
     public float spawnRate;
 
@@ -19,6 +19,7 @@ public class SpawnSystem : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        spawnTimePassed= Time.time;
         Spawn();
     }
 	

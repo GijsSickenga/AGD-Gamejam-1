@@ -14,6 +14,7 @@ public class weaponMovement : MonoBehaviour {
         Vector3 newPosition = transform.position;
         ns = GameObject.FindObjectOfType(typeof(Laser)) as Laser;
         timeLeft = shootTime;
+        Debug.Log("Komt hier wel right?");
     }
 
     bool shoot;
@@ -23,11 +24,12 @@ public class weaponMovement : MonoBehaviour {
 		if(Input.GetMouseButtonDown(0))
         {
             shoot = true;
-            ns.lineRenderer.enabled = true;
+            
             newPosition.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
             newPosition.y = transform.position.y;
             transform.position = newPosition;
             ns.shoot();
+            ns.lineRenderer.enabled = true;
 
             //
         }
