@@ -2,26 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnSystem : MonoBehaviour {
+public class SpawnSystem : MonoBehaviour
+{
 
     public GameObject[] spawners;
     public GameObject enemy;
     private Vector3 spawnPoint;
 
-    float spawnTime = 5f;
-
-    float spawnTimePassed = Time.time ;
+    private float nextActionTime = 1f;
+    float period = 1f;
 
     public float spawnRate;
 
-    public List <GameObject> enemies;
+    public List<GameObject> enemies;
 
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         Spawn();
     }
-	
+
 
     public IEnumerator Spawn()
     {
@@ -29,22 +30,21 @@ public class SpawnSystem : MonoBehaviour {
         yield return new WaitForSeconds(f);
         spawnPoint = spawners[Random.Range(0, 4)].transform.position;
         GameObject.Instantiate(enemy, spawnPoint, Quaternion.Euler(0, 0, 90));
-        StartCoroutine(Spawn());
-    }
-	// Update is called once per frame
-	void Update () {
-
-        if (spawnTime < spawnTimePassed)
-        {
-            StartCoroutine(Spawn());
-            spawnTime += 5;
-        }
-
-        else
-
-        {
-            spawnTime--;
-        }
         
     }
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (Time.time > nextActionTime)
+        {
+            nextActionTime += period;
+            StartCoroutine(Spawn());
+            if(period < 0.2)
+            period *= 0.99f;
+        }
+
+    }
+    
+
 }

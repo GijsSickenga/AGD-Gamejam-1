@@ -25,17 +25,12 @@ public class EnemyBehavior : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        transform.position += new Vector3 (0, -speed, 0) * Time.deltaTime;
+        transform.position += new Vector3 (speed, 0, 0) * Time.deltaTime;
         Vector3 a = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
-        
-        if (transform.position.y < a.y)
+        if (transform.position.x > a.x ) 
         {
-
-            
-            score.newScore = 0;
             Destroy(gameObject);
-                        
         }
-
+        
     }
 }
