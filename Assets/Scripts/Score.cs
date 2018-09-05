@@ -30,7 +30,6 @@ public class Score : MonoBehaviour
         healthSlider.value = life;
         score.text = "Score: " + scoreCount;
         multiplier.text = "X " + scoreMultiplier;
-        lifeCount.text = "life " + life;
 
         if (life <= 0) {
             SceneManager.LoadScene("EndScreen");

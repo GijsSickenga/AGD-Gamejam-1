@@ -31,7 +31,7 @@ public class SpawnSystem : MonoBehaviour
                                                     1);
 
         // Scale enemy speed based on ship size.
-        enemyBehaviour.speed = 2 * newEnemy.transform.localScale.x;
+        enemyBehaviour.speed = 5f * newEnemy.transform.localScale.x;
     }
 
     // Update is called once per frame

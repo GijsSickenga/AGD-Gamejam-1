@@ -5,13 +5,16 @@ using UnityEngine.UI;
 
 public class Laser : MonoBehaviour {
 
+    
     public LineRenderer lineRenderer;
     public Transform laserHit;
     EnemyBehavior enemy;
     Score score;
-	// Use this for initialization
-	void Start () {
-
+    public AudioClip LaserSound;
+    AudioSource audio;
+    // Use this for initialization
+    void Start () {
+        audio = GetComponent<AudioSource>();
         score = GameObject.FindObjectOfType(typeof(Score)) as Score;
         enemy = GameObject.FindObjectOfType(typeof(EnemyBehavior)) as EnemyBehavior;
         lineRenderer = GetComponent<LineRenderer>();
@@ -23,6 +26,7 @@ public class Laser : MonoBehaviour {
     public void shoot () {
        
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up);
+        audio.PlayOneShot((AudioClip)Resources.Load("LaserSound"));
         if (hit)
         {
             laserHit.position = hit.point;
