@@ -19,19 +19,22 @@ public class Laser : MonoBehaviour {
     public void shoot () {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up);
         Debug.DrawLine(transform.position, hit.point);
-        laserHit.position = hit.point;
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, laserHit.position);
+        
         if (hit)
         {
-
+            laserHit.position = hit.point;
+            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(1, laserHit.position);
             Destroy(hit.transform.gameObject);
             score.newScore++;
             score.scoreCount = score.scoreCount + 1 + score.newScore;
         }  
         else
         {
-            
+            laserHit.position = hit.point;
+            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(1, transform.up);
+
             Debug.Log("You missed!");
         }
             

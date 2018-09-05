@@ -33,7 +33,7 @@ public class weaponMovement : MonoBehaviour {
         if(shoot)
         {
             timeLeft -= Time.deltaTime;
-            Debug.Log(timeLeft);
+           
             if (timeLeft < 0)
             {
                 timeLeft = shootTime;

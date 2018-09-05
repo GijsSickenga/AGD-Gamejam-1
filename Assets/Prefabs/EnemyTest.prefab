@@ -18,10 +18,11 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4752559912730856}
-  - component: {fileID: 212365746834578692}
+  - component: {fileID: 4682312106348384}
   - component: {fileID: 114428495150328870}
   - component: {fileID: 58163590968150374}
+  - component: {fileID: 4937712890580452}
+  - component: {fileID: 212513167980640446}
   m_Layer: 0
   m_Name: EnemyTest
   m_TagString: Untagged
@@ -29,9 +30,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4937712890580452
+--- !u!4 &4682312106348384
 Transform:
   m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1593441519611092}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4937712890580452
+Transform:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1593441519611092}
@@ -47,7 +61,7 @@ CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1941632259679596}
+  m_GameObject: {fileID: 1593441519611092}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -71,7 +85,7 @@ MonoBehaviour:
   speed: 5
 --- !u!212 &212513167980640446
 SpriteRenderer:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1593441519611092}
