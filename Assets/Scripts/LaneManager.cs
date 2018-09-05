@@ -14,8 +14,8 @@ public class LaneManager : MonoBehaviour
     {
         get
         {
-            Vector3 laneScale = new Vector3(PixelToUnit(Screen.currentResolution.width), 1, 1);
-            laneScale.y = PixelToUnit(Screen.currentResolution.height) / _lanes.Count;
+            Vector3 laneScale = new Vector3(PixelToUnit(Camera.main.pixelHeight), 1, 1);
+            laneScale.y = PixelToUnit(Camera.main.pixelWidth) / _lanes.Count;
             return laneScale;
         }
     }
@@ -37,7 +37,7 @@ public class LaneManager : MonoBehaviour
     /// <returns>The size in unity units the given screen pixel count represents.</returns>
     public float PixelToUnit(float pixelCount)
     {
-        return Camera.main.GetComponent<Camera>().orthographicSize * 2f / (float)Screen.currentResolution.height * (float)pixelCount;
+        return Camera.main.GetComponent<Camera>().orthographicSize * 2f / (float)Camera.main.pixelHeight * (float)pixelCount;
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ public class LaneManager : MonoBehaviour
             // Calculate where the lane should be positioned.
             Vector3 newPosition = Vector3.zero;
             // Offset lane by half of screen width, and move to correct position in sequence of lanes.
-            newPosition.y = i * _lanes[i].transform.lossyScale.y + (_lanes[i].transform.lossyScale.y / 2) - PixelToUnit(Screen.currentResolution.height / 2f);
+            newPosition.y = i * _lanes[i].transform.lossyScale.y + (_lanes[i].transform.lossyScale.y / 2) - PixelToUnit(Camera.main.pixelWidth / 2f);
 
             // Assign new position to lane.
             _lanes[i].transform.position = newPosition;
@@ -129,7 +129,7 @@ public class LaneManager : MonoBehaviour
         foreach (GameObject lane in _lanes)
         {
             GameObject spawner = new GameObject("Spawner");
-            spawner.transform.position = new Vector3(lane.transform.position.x - PixelToUnit(Screen.currentResolution.width / 2f * 1.1f),
+            spawner.transform.position = new Vector3(lane.transform.position.x - PixelToUnit(Camera.main.pixelHeight / 2f * 1.1f),
                                                      lane.transform.position.y,
                                                      lane.transform.position.z);
 
