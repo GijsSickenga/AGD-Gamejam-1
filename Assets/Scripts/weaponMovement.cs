@@ -14,7 +14,7 @@ public class weaponMovement : MonoBehaviour {
         Vector3 newPosition = transform.position;
         ns = GameObject.FindObjectOfType(typeof(Laser)) as Laser;
         timeLeft = shootTime;
-        Debug.Log("Komt hier wel right?");
+
     }
 
     bool shoot;
