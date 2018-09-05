@@ -32,6 +32,7 @@ public class Laser : MonoBehaviour {
             enemy = hit.transform.gameObject.GetComponent<EnemyBehavior>();
             enemy.Explode();
 
+            score.life++;
             score.scoreMultiplier++;
             score.scoreCount = score.scoreCount + 3 * score.scoreMultiplier;
 
@@ -40,6 +41,7 @@ public class Laser : MonoBehaviour {
         else
         {
             score.scoreMultiplier = 0;
+            score.life -= 10;
             Vector2 up = new Vector2(- 7.5f, transform.position.y);
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, up);
