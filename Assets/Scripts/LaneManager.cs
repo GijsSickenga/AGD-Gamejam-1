@@ -10,6 +10,7 @@ public class LaneManager : MonoBehaviour
     public int _numberOfLanes = 3;
     private List<GameObject> _lanes = new List<GameObject>();
 
+    // Returns the scale a lane should have with the current screen resolution.
     public Vector3 LaneScale
     {
         get
@@ -22,12 +23,8 @@ public class LaneManager : MonoBehaviour
 
     private void Start()
     {
+        // Generate lanes at the start of the game.
         RegenerateLanes();
-    }
-
-    private void Update()
-    {
-        
     }
 
     /// <summary>
@@ -103,7 +100,7 @@ public class LaneManager : MonoBehaviour
 
             // Generate lane color.
             float val = (i % 2 == 0) ? 1.0f : 0.6f;
-            Color laneColor = Color.HSVToRGB(0, 1, val);
+            Color laneColor = Color.HSVToRGB(0, 0, val);
             laneColor.a = 0.2f;
 
             // Assign color to lane.
@@ -133,6 +130,10 @@ public class LaneManager : MonoBehaviour
                                                      lane.transform.position.y,
                                                      lane.transform.position.z);
 
+            // Parent the spawner in the lane, so it's removed when the lane is removed.
+            spawner.transform.parent = lane.transform;
+
+            // Add the new spawner to the spawners list, so enemies can start spawning on it.
             _spawnSystem.spawners.Add(spawner);
         }
     }
