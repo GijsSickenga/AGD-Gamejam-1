@@ -90,6 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  DestructionEffect: {fileID: 198226639376694826, guid: 6d5608418411b8a41b5563024316c67c,
+    type: 2}
 --- !u!212 &212626738072200376
 SpriteRenderer:
   m_ObjectHideFlags: 1

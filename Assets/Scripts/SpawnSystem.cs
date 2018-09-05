@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SpawnSystem : MonoBehaviour
 {
-
-    public GameObject[] spawners;
+    public List<GameObject> spawners = new List<GameObject>();
     public GameObject enemy;
     private Vector3 spawnPoint;
     
@@ -23,7 +22,8 @@ public class SpawnSystem : MonoBehaviour
     // Use this for initialization
 
 
-    void Start () {
+    void Start ()
+    {
     }
 
 
@@ -31,7 +31,7 @@ public class SpawnSystem : MonoBehaviour
     {
         float f = 1 / spawnRate;
         yield return new WaitForSeconds(f);
-        spawnPoint = spawners[Random.Range(0, 4)].transform.position;
+        spawnPoint = spawners[Random.Range(0, spawners.Count)].transform.position;
         GameObject newEnemy = GameObject.Instantiate(enemy, spawnPoint, Quaternion.Euler(0, 0, 90));
         newEnemy.GetComponent<EnemyBehavior>().score = scoreManager;
     }
