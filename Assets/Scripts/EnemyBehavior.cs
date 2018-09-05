@@ -6,26 +6,31 @@ public class EnemyBehavior : MonoBehaviour {
 
     public float speed;
     Renderer m_Renderer;
-   
+    Score score;
+    private SpawnSystem spawner;   
 
     // Use this for initialization
     void Start () {
-        m_Renderer = GetComponent<Renderer>();
+        spawner = GameObject.Find("Spawner").GetComponent<SpawnSystem>();
+        spawner.enemies.Add(gameObject);
+        score = GameObject.FindObjectOfType(typeof(Score)) as Score;
+
     }
 
-    
+    private void OnDestroy()
+    {
+        spawner.enemies.Remove(gameObject);
+    }
 
     // Update is called once per frame
     void Update () {
 
-        transform.position += new Vector3 (0, -speed, 0) * Time.deltaTime;
+        transform.position += new Vector3 (speed, 0, 0) * Time.deltaTime;
         Vector3 a = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
-        
-        if (transform.position.y < a.y)
+        if (transform.position.x > a.x ) 
         {
             Destroy(gameObject);
-                        
         }
-
+        
     }
 }

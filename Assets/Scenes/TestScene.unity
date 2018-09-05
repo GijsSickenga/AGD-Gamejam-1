@@ -203,8 +203,9 @@ MonoBehaviour:
   - {fileID: 1610080382}
   - {fileID: 728137851}
   - {fileID: 1691089470}
-  enemy: {fileID: 1941632259679596, guid: b72b54345a33b4144bbe4ef0f7f29472, type: 2}
+  enemy: {fileID: 1593441519611092, guid: f8c3ffc9970168f45a1b032a70ed008c, type: 2}
   spawnRate: 0.5
+  enemies: []
 --- !u!4 &801620630
 Transform:
   m_ObjectHideFlags: 0
