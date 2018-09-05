@@ -51,5 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703b59e1a8c403945b510e5c5e247b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnSystem: {fileID: 0}
   _lanePrefab: {fileID: 1316452267601454, guid: 359120d5f43d2964399727d3baaa3c2f,
     type: 2}
+  _numberOfLanes: 3

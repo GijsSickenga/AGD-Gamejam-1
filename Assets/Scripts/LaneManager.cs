@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LaneManager : MonoBehaviour
 {
+    public SpawnSystem _spawnSystem;
     public GameObject _lanePrefab;
 
     public int _numberOfLanes = 3;
@@ -21,7 +22,7 @@ public class LaneManager : MonoBehaviour
 
     private void Start()
     {
-        // RegenerateLanes();
+        RegenerateLanes();
     }
 
     private void Update()
@@ -47,6 +48,7 @@ public class LaneManager : MonoBehaviour
         CreateLanes();
         ResizeLanes();
         AlignLanes();
+        PopulateLanes();
     }
 
     /// <summary>
@@ -106,6 +108,32 @@ public class LaneManager : MonoBehaviour
 
             // Assign color to lane.
             _lanes[i].GetComponent<SpriteRenderer>().color = laneColor;
+        }
+    }
+
+    /// <summary>
+    /// Populates the lanes with spawners.
+    /// </summary>
+    private void PopulateLanes()
+    {
+        // Delete any existing spawners.
+        foreach (GameObject spawner in _spawnSystem.spawners)
+        {
+            Destroy(spawner);
+        }
+
+        // Empty list of spawners.
+        _spawnSystem.spawners.Clear();
+
+        // Add a spawner to each of the lanes.
+        foreach (GameObject lane in _lanes)
+        {
+            GameObject spawner = new GameObject("Spawner");
+            spawner.transform.position = new Vector3(lane.transform.position.x - PixelToUnit(Screen.currentResolution.width / 2f * 1.1f),
+                                                     lane.transform.position.y,
+                                                     lane.transform.position.z);
+
+            _spawnSystem.spawners.Add(spawner);
         }
     }
 }
