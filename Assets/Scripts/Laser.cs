@@ -6,11 +6,13 @@ public class Laser : MonoBehaviour {
 
     public LineRenderer lineRenderer;
     public Transform laserHit;
+    EnemyBehavior enemy;
     Score score;
 	// Use this for initialization
 	void Start () {
         Debug.Log("Hier dan ook right???");
         score = GameObject.FindObjectOfType(typeof(Score)) as Score;
+        enemy = GameObject.FindObjectOfType(typeof(EnemyBehavior)) as EnemyBehavior;
         lineRenderer = GetComponent<LineRenderer>();
         //lineRenderer.enabled = false;
         lineRenderer.useWorldSpace = true;
@@ -25,14 +27,17 @@ public class Laser : MonoBehaviour {
             laserHit.position = hit.point;
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, laserHit.position);
-            Destroy(hit.transform.gameObject);
+            enemy = hit.transform.gameObject.GetComponent<EnemyBehavior>();
+            enemy.Explode();
+            
             score.newScore++;
             score.scoreCount = score.scoreCount + 1 + score.newScore;
+            Destroy(hit.transform.gameObject);
         }  
         else
         {
             score.newScore = 0;
-            Vector2 up = new Vector2(transform.position.x, 7.5f);
+            Vector2 up = new Vector2(-7.5f, transform.position.y);
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, up);
         }
